@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Diagnosis Result</title>
+
+  <!-- Favicons -->
+  <link href="/static/image/DermiDetect.png" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Raleway:300,400,500,700|Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/boxicons.min.css">
+  <link rel="stylesheet" href="/static/glightbox.min.css">
+  <link rel="stylesheet" href="/static/remixicon.css">
+  <link rel="stylesheet" href="/static/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/static/style.css">
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fffa 0%, #e6f9f3 100%);
+      min-height: 100vh;
+      padding-top: 90px; /* Prevent navbar overlap */
+    }
+    th, td {
+      padding: 15px;
+    }
+    .portfolio-info {
+      background: #fff;
+      padding: 36px 32px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      transition: box-shadow 0.3s;
+      border: 1px solid #e3e3e3;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      animation: fadeInUp 0.7s cubic-bezier(.39,.575,.56,1.000) both;
+    }
+    .portfolio-info:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.19);
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #009961 0%, #00b371 100%);
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 32px;
+      border-radius: 32px;
+      box-shadow: 0 2px 8px rgba(0,153,97,0.10);
+      transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #00b371 0%, #009961 100%);
+      box-shadow: 0 4px 16px rgba(0,153,97,0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .alert {
+      font-size: 1.25rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      border: none;
+      padding: 22px 24px;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.7s cubic-bezier(.39,.575,.56,1.000) both;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .alert-danger {
+      background: linear-gradient(90deg, #ff5858 0%, #ffb199 100%);
+      color: #fff;
+      border-left: 6px solid #ff5858;
+    }
+    .alert-success {
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      color: #222;
+      border-left: 6px solid #43e97b;
+    }
+    .alert-warning {
+      background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%);
+      color: #222;
+      border-left: 6px solid #f7971e;
+    }
+    .img-fluid.rounded.shadow-sm.border {
+      border-radius: 20px !important;
+      box-shadow: 0 4px 24px rgba(0,153,97,0.13);
+      border: 2px solid #e3e3e3;
+      margin-bottom: 18px;
+      transition: box-shadow 0.2s;
+    }
+    .img-fluid.rounded.shadow-sm.border:hover {
+      box-shadow: 0 8px 32px rgba(0,153,97,0.19);
+    }
+    .form-label {
+      font-weight: 700;
+      color: #009961;
+      font-size: 1.1rem;
+    }
+    .container.mb-5 {
+      background: #f8f9fa;
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      padding: 36px 28px 22px 28px;
+      margin-top: 36px;
+      margin-bottom: 36px;
+    }
+    .diagnosis-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #009961;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,153,97,0.07);
+    }
+    .breadcrumbs {
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      background: #f4fdf9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-xl-9 d-flex align-items-center justify-content-lg-between">
+          <h1 class="logo me-auto me-lg-0"><a href="/">SkinSense</a></h1>
+          <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+              <li><a class="nav-link scrollto" href="/">Home</a></li>
+              <li><a class="nav-link scrollto active" href="/try_now">Diagnose</a></li>
+              <li><a class="nav-link scrollto" href="/learn">Learn</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Botpress Webchat Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/27/03/20250727032034-LU2VUI2U.js" defer></script>
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs mt-5">
+      <div class="container">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/try_now">Diagnose</a></li>
+          <li>Diagnosis Results</li>
+        </ol>
+        <h2>Diagnosis Results</h2>
+      </div>
+    </section>
+
+    <!-- ======= Upload Form Section ======= -->
+    <section class="container mb-5">
+      <div class="card shadow-sm p-4" style="border-radius: 20px; background: #fff; max-width: 520px; margin: 0 auto;">
+        <form id="diagnose-form">
+          <div class="mb-3 text-center">
+            <div style="font-size: 2.5rem; color: #009961; margin-bottom: 10px;">
+              <i class="bi bi-cloud-arrow-up-fill"></i>
+            </div>
+            <label for="file" class="form-label">Upload a new image for diagnosis:</label>
+            <input type="file" name="file" id="file" accept="image/*" class="form-control" required style="margin: 0 auto; max-width: 320px;">
+          </div>
+          <div class="text-center">
+            <button type="submit" id="diagnose-btn" class="btn btn-primary">Diagnose</button>
+            <p id="diagnose-status" class="text-muted mt-3 mb-0" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ======= Diagnosis Section ======= -->
+    <section id="diagnosis-results" class="portfolio-details py-5 bg-light" hidden>
+      <div class="container">
+        <div class="row gy-4 align-items-center">
+          <!-- Image -->
+          <div class="col-lg-7 text-center">
+            <div class="portfolio-details-slider">
+              <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                  <img id="result-image" src="" alt="Uploaded image" class="img-fluid rounded shadow-sm border" style="max-height: 340px; object-fit: contain; background: #f8f9fa;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Diagnosis Card -->
+          <div class="col-lg-5">
+            <div class="portfolio-info text-center">
+              <div class="diagnosis-title mb-3">Skin Cancer Diagnosis</div>
+              <div id="result-alert" class="alert alert-warning" role="alert">
+                <strong id="result-diagnosis"></strong>
+              </div>
+              <div class="mb-3 mt-2" style="font-size: 1.08rem; color: #444; background: #f8f9fa; border-radius: 10px; padding: 12px 16px; box-shadow: 0 1px 6px rgba(0,153,97,0.07);">
+                <i class="bi bi-info-circle-fill" style="color: #009961; margin-right: 6px;"></i>
+                <span id="result-info"></span>
+              </div>
+              <div class="progress my-3" style="height: 22px; border-radius: 12px;">
+                <div id="confidence-bar" class="progress-bar bg-success" role="progressbar" style="font-weight: 700; font-size: 1.1rem; border-radius: 12px; width: 0;" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <p class="mb-0 text-muted">Model confidence</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="mt-5 bg-dark text-white py-4">
+    <div class="container text-center">
+      <h3>SkinSense</h3>
+      <p>Our technology at your service on your fingertips</p>
+      <div class="social-links mb-2">
+        <a href="#" class="facebook text-white me-3"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram text-white me-3"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="twitter text-white"><i class="bx bxl-twitter"></i></a>
+      </div>
+      <p class="mb-0">&copy; 2025 SkinCancer Project. All rights reserved.</p>
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- ======= JS Files ======= -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+  <script src="/static/purecounter_vanilla.js"></script>
+  <script src="/static/bootstrap.bundle.min.js"></script>
+  <script src="/static/glightbox.min.js"></script>
+  <script src="/static/isotope.pkgd.min.js"></script>
+  <script src="/static/swiper-bundle.min.js"></script>
+  <script src="/static/validate.js"></script>
+  <script src="/static/main.js"></script>
+
+
+  <!-- In-browser classification with TensorFlow.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  <script>
+    (function() {
+      var cancerClasses = [
+        'Actinic keratoses and intraepithelial carcinomae',
+        'Basal Cell Carcinoma',
+        'Benign Keratosis',
+        'Dermatofibroma',
+        'Melanocytic Nevus',
+        'Vascular Lesion',
+        'Melanoma'
+      ];
+      var cancerInfo = {
+        'Actinic keratoses and intraepithelial carcinomae': "Precancerous, rough, scaly patches on sun-exposed skin. Early treatment can prevent progression to squamous cell carcinoma.",
+        'Basal Cell Carcinoma': "The most common skin cancer. Grows slowly and rarely spreads, but can cause local damage if untreated.",
+        'Benign Keratosis': "Non-cancerous skin growths, often appearing as warty or waxy spots. Generally harmless but can resemble skin cancer.",
+        'Dermatofibroma': "A benign, firm bump often found on the legs. Not dangerous and usually does not require treatment.",
+        'Melanocytic Nevus': "Commonly known as a mole. Most are harmless, but changes in size, color, or shape should be checked by a doctor.",
+        'Vascular Lesion': "Abnormal blood vessels in the skin, usually benign. Some types may require monitoring or treatment.",
+        'Melanoma': "A serious form of skin cancer that can spread rapidly. Early detection and treatment are critical for a good outcome. See a dermatologist promptly if suspected."
+      };
+
+      var form = document.getElementById('diagnose-form');
+      var fileInput = document.getElementById('file');
+      var button = document.getElementById('diagnose-btn');
+      var status = document.getElementById('diagnose-status');
+      var modelPromise = null;
+
+      function getModel() {
+        if (!modelPromise) {
+          modelPromise = tf.loadLayersModel('/model/model.json').catch(function(err) {
+            modelPromise = null;
+            throw err;
+          });
+        }
+        return modelPromise;
+      }
+
+      function loadImage(file) {
+        return new Promise(function(resolve, reject) {
+          var img = new Image();
+          img.onload = function() { resolve(img); };
+          img.onerror = function() { reject(new Error('Could not read that image file.')); };
+          img.src = URL.createObjectURL(file);
+        });
+      }
+
+      function showResult(img, label, confidence) {
+        document.getElementById('result-image').src = img.src;
+        document.getElementById('result-diagnosis').textContent = label;
+        document.getElementById('result-info').textContent = cancerInfo[label] || 'No additional information available.';
+        var alertEl = document.getElementById('result-alert');
+        alertEl.className = 'alert ' + (label.indexOf('Melanoma') !== -1 ? 'alert-danger' : label.indexOf('Benign') !== -1 ? 'alert-success' : 'alert-warning');
+        var bar = document.getElementById('confidence-bar');
+        bar.textContent = confidence + '%';
+        bar.style.width = confidence + '%';
+        bar.setAttribute('aria-valuenow', confidence);
+        var section = document.getElementById('diagnosis-results');
+        section.hidden = false;
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var file = fileInput.files[0];
+        if (!file) return;
+        button.disabled = true;
+        status.textContent = 'Analyzing image…';
+        Promise.all([getModel(), loadImage(file)]).then(function(results) {
+          var model = results[0], img = results[1];
+          // Match the Flask preprocessing (load_img uses nearest-neighbour): resize to 28x28 RGB and scale to [0, 1]
+          var probs = tf.tidy(function() {
+            var input = tf.browser.fromPixels(img, 3)
+              .resizeNearestNeighbor([28, 28])
+              .toFloat()
+              .div(255)
+              .expandDims(0);
+            return model.predict(input).dataSync();
+          });
+          var best = 0;
+          for (var i = 1; i < probs.length; i++) if (probs[i] > probs[best]) best = i;
+          showResult(img, cancerClasses[best], Math.round(probs[best] * 100));
+          status.textContent = '';
+        }).catch(function(err) {
+          status.textContent = 'Something went wrong: ' + err.message;
+        }).then(function() {
+          button.disabled = false;
+        });
+      });
+    })();
+  </script>
+  <!-- Botpress Webchat Integration -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js" defer></script>
+  <script src="https://files.bpcontent.cloud/2025/07/27/03/20250727032034-LU2VUI2U.js" defer></script>
+
+</body>
+
+</html>
