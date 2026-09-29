@@ -1,0 +1,15 @@
+[build]
+  # The site is served as static files; the classifier runs in the browser
+  # via TensorFlow.js using the converted model in public/model.
+  publish = "public"
+  command = "rm -rf public/static && cp -r static public/static"
+
+[[redirects]]
+  from = "/try_now"
+  to = "/q2/"
+  status = 301
+
+[[redirects]]
+  from = "/learn.html"
+  to = "/learn/"
+  status = 301
