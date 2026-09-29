@@ -4,6 +4,11 @@
   publish = "public"
   command = "rm -rf public/static && cp -r static public/static"
 
+[build.environment]
+  # Python 3.11.9 (from runtime.txt) has no GitHub artifact attestations,
+  # which makes mise fail to install it during dependency installation.
+  MISE_PYTHON_GITHUB_ATTESTATIONS = "false"
+
 [[redirects]]
   from = "/try_now"
   to = "/q2/"
